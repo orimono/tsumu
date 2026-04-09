@@ -28,10 +28,6 @@ func main() {
 	defer pool.Close()
 
 	st := store.New(pool)
-	if err := st.Migrate(ctx); err != nil {
-		slog.Error("failed to run migrations", "err", err)
-		os.Exit(1)
-	}
 
 	nc, err := nats.Connect(cfg.NatsURL)
 	if err != nil {
